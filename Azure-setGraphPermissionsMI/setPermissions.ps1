@@ -10,8 +10,8 @@
     REMEMBER to put in the identity name ($identityName), resource group name ($rgName) and the permissions you want to delegate ($permissions)
 #>
 
-$identityName = "id-templatetool-d-01"
-$rgName = "rg-templatetool-development"
+$identityName = "<Managed-identity-name"
+$rgName = "<Resource-group-name"
 $permissions = @("ChannelMember.Read.All")
 
 az login
