@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "html-feed-card",
+    "libraryId": "088f9c19-7edc-42cd-a202-1b72a65f79b0",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "html-feed-card",
+    "solutionShortDescription": "html-feed-card description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "Image"
+  }
+}

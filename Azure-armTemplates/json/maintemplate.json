@@ -1,0 +1,47 @@
+{
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {
+    "name": {
+        "type": "string",
+        "defaultValue": "linkeddemo001"
+    }
+},
+"variables": {
+    "linked-template": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json",
+    "linked-template-2": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+},
+"resources": [
+    {
+        "name": "storage",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2019-10-01",
+        "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+                "uri": "[variables('linked-template')]",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "location": { "value": "[resourceGroup().location]" }
+            }
+        }
+    },
+    {
+        "name": "identity",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2019-10-01",
+        "dependsOn": [
+            "[resourceId('Microsoft.Resources/deployments','storage')]"
+        ],
+        "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+                "uri": "[variables('linked-template-2')]",
+                "contentVersion": "1.0.0.0"
+            }
+        }
+    }
+],
+"outputs": {}
+}
